@@ -19,7 +19,7 @@ Lyrics of Thai songs
 |---|---|---|---|---|---|---|---|---|
 |529|513|532|591|606|1120|1634|1885|1151|
 
-## word frequency
+## word frequency (not so useful)
 |rank|word|tokens|word frequency per 10K|
 |:-:|:-:|:-:|:-:|
 | 1 | เธอ | 157249 | 385.575 |
@@ -52,3 +52,5 @@ Lyrics of Thai songs
 | 28 | กับ | 22208 | 54.454 |
 | 29 | รู้ | 22095 | 54.177 |
 | 30 | และ | 20887 | 51.215 |
+
+## Zipf's Law
