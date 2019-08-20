@@ -54,3 +54,45 @@ Lyrics of Thai songs
 | 30 | และ | 20887 | 51.215 |
 
 ## Zipf's Law
+![Zipf](https://user-images.githubusercontent.com/44984892/63362803-a0b45c80-c39c-11e9-87ea-2d1f88f29743.png)
+
+## n-gram
+### bigram
+|rank|word|counts|
+|:-:|:-:|:-:|
+| 1 | ('ให้', 'เธอ') | 12771 |
+| 2 | ('รัก', 'เธอ') | 12181 |
+| 3 | ('ที่', 'เธอ') | 8652 |
+| 4 | ('อยาก', 'จะ') | 7936 |
+| 5 | ('คน', 'ที่') | 7858 |
+| 6 | ('ได้', 'ไหม') | 7370 |
+| 7 | ('เธอ', 'จะ') | 6952 |
+| 8 | ('รู้', 'ว่า') | 6935 |
+| 9 | ('ที่', 'ฉัน') | 6820 |
+| 10 | ('ฉัน', 'จะ') | 6274 |
+
+
+### trigram
+|rank|word|counts|
+|:-:|:-:|:-:|
+| 1 | ('อยาก', 'ให้', 'เธอ') | 2852 |
+| 2 | ('ฉัน', 'รัก', 'เธอ') | 2240 |
+| 3 | ('คำ', 'ว่า', 'รัก') | 2219 |
+| 4 | ('รู้', 'ว่า', 'เธอ') | 1485 |
+| 5 | ('ให้', 'เธอ', 'ได้') | 1415 |
+| 6 | ('ใคร', 'สัก', 'คน') | 1274 |
+| 7 | ('I', "'", 'm') | 1233 |
+| 8 | ('บอ', 'กว่า', 'รัก') | 1071 |
+| 9 | ('มี', 'แต่', 'เธอ') | 1019 |
+| 10 | ('ให้', 'เธอ', 'รู้') | 1011 |
+
+## tf-idf: total documents = 15333
+<a href="https://www.codecogs.com/eqnedit.php?latex={\rm&space;tf&space;\cdot&space;idf}&space;=&space;(1&space;&plus;&space;\log&space;{\rm&space;tf}_{t,d})&space;\times&space;\log\frac{N}{{\rm&space;df}_t}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\rm&space;tf&space;\cdot&space;idf}&space;=&space;(1&space;&plus;&space;\log&space;{\rm&space;tf}_{t,d})&space;\times&space;\log\frac{N}{{\rm&space;df}_t}" title="{\rm tf \cdot idf} = (1 + \log {\rm tf}_{t,d}) \times \log\frac{N}{{\rm df}_t}" /></a>
+
+|word|document frequency|tf-idf mean|tf-idf median|tf-idf max|tf-idf min|tf-idf SD|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|เธอ|12256|0.195|0.202|0.276|0.097|0.033|
+|ฉัน|12013|0.193|0.202|0.297|0.106|0.037|
+|รัก|9295|0.348|0.348|0.604|0.217|0.078|
+|ใจ|8630|0.352|0.369|0.638|0.250|0.079|
+
