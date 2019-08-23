@@ -1,6 +1,7 @@
 from bs4 import BeautifulSoup
 from pythainlp import word_tokenize, corpus
 from gensim.models import word2vec
+import matplotlib.pyplot as plt
 import requests
 import collections
 import json
@@ -53,7 +54,8 @@ def make_txt():
         ids = data.keys()
         for id in ids:
             lyr = data[id]['lyrics']
-            writer.writerows(lyr)
+            tokens = tokenize_id(lyr, id)
+            writer.writerows(tokens)
     """
     with open('siamzone_token.json', 'w') as f:
         ids = data.keys()
@@ -83,21 +85,37 @@ class SiamZone:
             self.lines = f.read().split('\n')[:-1]  # [[id, token1, token2,....], [],...]
         self.dic = {}
 
-    def word_freq(self):
+    def word_freq(self, topn=30):
         count = collections.Counter()
         for line in self.lines:
             tokens = line.split(' ')[1:]  # exclude id 
             id = line.split(' ')[0]
             for token in tokens:
-                count[token] += 1
+                if token != ' ' and token != '':
+                    count[token] += 1
+        
+        # print topn: rank, word, tokens, tokens/10K
+        most = count.most_common(topn)
+        for i in range(topn):
+            print('| {} | {} | {} | {:.3f} |'.format(i+1, most[i][0], most[i][1], most[i][1]/4078300*10000))
+        
+        # return counter
         return count
 
-    def ngram(self, n=2):
+
+    def ngram(self, n=2, topn=10):
         count = collections.Counter()
         for line in self.lines:
             tokens = line.split(' ')[1:]  # exclude id 
             for i in range(len(tokens)-n+1):
-                count[tuple(tokens[i:i+n])] += 1
+                if '' not in tokens[i:i+n] and ' ' not in tokens[i:i+n]:
+                    count[tuple(tokens[i:i+n])] += 1
+
+        # print topn: rank, ngram, count
+        most = count.most_common(topn)
+        for i in range(topn):
+            print('| {} | {} | {} |'.format(i+1, most[i][0], most[i][1]))
+        
         return count
 
     def make_tfidf(self):
@@ -140,11 +158,15 @@ class SiamZone:
             except:
                 pass
         values = np.array(list(dict(counter).values()))
-        print('mean', np.mean(values))
-        print('max', np.max(values))
-        print('min', np.min(values))
-        print('median', np.median(values))
-        print('sd', np.std(values))
+
+        # print df, mean, median, max, min, SD
+        df = len(self.idf_dic[word])
+        mean = np.mean(values)
+        medi = np.median(values)
+        maxi = np.max(values)
+        mini = np.min(values)
+        sd = np.std(values)
+        print('|{}|{}|{:.3f}|{:.3f}|{:.3f}|{:.3f}|{:.3f}|'.format(word,df,mean,medi,maxi,mini,sd))
         return counter
 
 sz = SiamZone()
