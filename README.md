@@ -90,6 +90,7 @@ Lyrics of Thai songs
 
 ## Zipf's Law
 ![Zipf](https://user-images.githubusercontent.com/44984892/63362803-a0b45c80-c39c-11e9-87ea-2d1f88f29743.png)
+![zipf_without_stop](https://user-images.githubusercontent.com/44984892/64610226-007cb100-d3f9-11e9-9a8d-67c4b5c536b5.png)
 
 ## n-gram
 ### bigram
