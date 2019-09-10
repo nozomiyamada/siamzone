@@ -90,7 +90,7 @@ Lyrics of Thai songs
 | 29 | เวลา | 6179 | 35.631 |
 | 30 | สิ | 6164 | 35.544 |
 
-## Zipf's Law
+## Zipf's Law & Linear Regression
 ![Zipf](https://user-images.githubusercontent.com/44984892/63362803-a0b45c80-c39c-11e9-87ea-2d1f88f29743.png)
 
 - exponent s = -0.8719
