@@ -11,6 +11,8 @@ Lyrics of Thai songs
 - 4,078,300 tokens with stopwords
 - 1,714,228 tokens without stopwords
 - period: 2002-08-30 ~ 2019-07-26
+- tokenizer: [`PyThaNLP 2.0.3`](https://github.com/PyThaiNLP/pythainlp)
+- stopword list: `pythainlp.corpus.thai_stopwords()`
 
 |year|2002|2003|2004|2005|2006|2007|2008|2009|2010|
 |---|---|---|---|---|---|---|---|---|---|
@@ -90,7 +92,12 @@ Lyrics of Thai songs
 
 ## Zipf's Law
 ![Zipf](https://user-images.githubusercontent.com/44984892/63362803-a0b45c80-c39c-11e9-87ea-2d1f88f29743.png)
+exponent s = -0.8719
+R<sup>2</sup> = 0.9904
+
 ![zipf_without_stop](https://user-images.githubusercontent.com/44984892/64610462-7ed95300-d3f9-11e9-94f8-fb37872bc574.png)
+exponent s = -1.0906
+R<sup>2</sup> = 0.9889
 
 ## n-gram
 ### bigram
