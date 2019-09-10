@@ -4,9 +4,9 @@ from gensim.models import word2vec
 import matplotlib.pyplot as plt
 import requests
 import collections
-import json
 import numpy as np
-import csv
+import csv, json
+import matplotlib.pyplot as plt
 
 url = 'https://www.siamzone.com/music/thailyric/' # + id 5 digits
 
@@ -101,6 +101,39 @@ class SiamZone:
         
         # return counter
         return count
+
+    def word_freq_nostop(self, topn=30):
+        count = collections.Counter()
+        for line in self.lines:
+            tokens = line.split(' ')[1:]  # exclude id 
+            id = line.split(' ')[0]
+            for token in tokens:
+                if token != ' ' and token != '' and token not in corpus.thai_stopwords() and token not in ['(',')']:
+                    count[token] += 1
+        
+        # print topn: rank, word, tokens, tokens/10K
+        print(sum(count.values()))
+        most = count.most_common(topn)
+        for i in range(topn):
+            print('| {} | {} | {} | {:.3f} |'.format(i+1, most[i][0], most[i][1], most[i][1]/1734185*10000))
+        
+        # return counter
+        return count
+
+    def zipf(self, stop=False, n=1000):
+        if stop == True:
+            count = self.word_freq()
+        else:
+            count = self.word_freq_nostop()
+        
+        x = range(1, n+1)
+        y = [tup[1] for tup in count.most_common(n)]
+        plt.xscale('log')
+        plt.yscale('log')
+        plt.title(f'word frequency without stopwords: top {n}')
+        plt.plot(x,y)
+        plt.show()
+
 
 
     def ngram(self, n=2, topn=10):
