@@ -131,7 +131,7 @@ Lyrics of Thai songs
 | 9 | ('มี', 'แต่', 'เธอ') | 1019 |
 | 10 | ('ให้', 'เธอ', 'รู้') | 1011 |
 
-## tf-idf: total documents = 15333
+## tf-idf (with stop words): total documents = 15333
 <a href="https://www.codecogs.com/eqnedit.php?latex={\rm&space;tf&space;\cdot&space;idf}&space;=&space;(1&space;&plus;&space;\log&space;{\rm&space;tf}_{t,d})&space;\times&space;\log\frac{N}{{\rm&space;df}_t}" target="_blank"><img src="https://latex.codecogs.com/gif.latex?{\rm&space;tf&space;\cdot&space;idf}&space;=&space;(1&space;&plus;&space;\log&space;{\rm&space;tf}_{t,d})&space;\times&space;\log\frac{N}{{\rm&space;df}_t}" title="{\rm tf \cdot idf} = (1 + \log {\rm tf}_{t,d}) \times \log\frac{N}{{\rm df}_t}" /></a>
 
 |word|document frequency|tf-idf mean|tf-idf median|tf-idf max|tf-idf min|tf-idf SD|
@@ -158,3 +158,27 @@ Lyrics of Thai songs
 |อยู่|8468|0.365|0.381|0.691|0.258|0.085|
 |กัน|8142|0.391|0.406|0.721|0.275|0.092|
 |ใจ|8630|0.352|0.369|0.638|0.250|0.079|
+
+## tf-idf (without stopwords): total documents = 15333
+|word|document frequency|tf-idf mean|tf-idf median|tf-idf max|tf-idf min|tf-idf SD|
+|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
+|รัก|9295|0.348|0.348|0.604|0.217|0.078|
+|คน|9162|0.329|0.330|0.620|0.224|0.078|
+|ใจ|8630|0.352|0.369|0.638|0.250|0.079|
+|รู้|6980|0.472|0.445|0.886|0.342|0.107|
+|หัวใจ|6713|0.491|0.467|0.899|0.359|0.106|
+|ไหม|5470|0.636|0.661|1.208|0.448|0.143|
+|ทำ|5303|0.620|0.600|1.114|0.461|0.144|
+|อย่า|3945|0.841|0.871|1.681|0.590|0.207|
+|ดี|4773|0.665|0.659|1.426|0.507|0.154|
+|ไม่เคย|4482|0.693|0.695|1.251|0.534|0.156|
+|เจอ|4436|0.695|0.701|1.282|0.539|0.155|
+|ไม่มี|4091|0.745|0.747|1.633|0.574|0.171|
+|บ่|904|2.355|2.403|3.898|1.229|0.436|
+|เหมือน|4288|0.698|0.720|1.285|0.553|0.151|
+|ไม่ได้|3222|0.890|0.881|1.658|0.678|0.199|
+|ไม่รู้|3381|0.844|0.854|1.626|0.657|0.189|
+|รอ|2538|1.051|1.016|2.033|0.781|0.253|
+|สัก|2981|0.915|0.925|1.801|0.711|0.205|
+|อ้าย|730|2.478|2.584|3.380|1.322|0.503|
+|เจ็บ|2468|1.066|1.032|1.987|0.793|0.252|
