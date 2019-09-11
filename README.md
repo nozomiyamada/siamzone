@@ -4,8 +4,9 @@ website: [Siam Zone](https://www.siamzone.com/)
 
 Lyrics of Thai songs
 
-## scraped data: `siamzone.json` 
-- `{id: {'artist':---, 'title':---, 'lyrics':---, 'date':---}, id: {---}, ---}`
+## scraped data: `siamzone.json`, `siamzone.tsv`
+- json file: `{id: {'artist':---, 'title':---, 'lyrics':---, 'date':---}, id: {---}, ---}`
+- tsv file : `[[date artist title lyrics], []...]`
 - 3,463 artists
 - 15,333 songs
 - period: 2002-08-30 ~ 2019-07-26
