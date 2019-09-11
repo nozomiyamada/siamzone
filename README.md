@@ -8,7 +8,7 @@ Lyrics of Thai songs
 - json file: `{id: {'artist':---, 'title':---, 'lyrics':---, 'date':---}, id: {---}, ---}`
 - tsv file : `[[date artist title lyrics], []...]`
 - 3,463 artists
-- 15,333 songs
+- 15,412 songs
 - period: 2002-08-30 ~ 2019-07-26
 - tokenizer: [`PyThaNLP 2.0.3`](https://github.com/PyThaiNLP/pythainlp)
 - stopword list: `pythainlp.corpus.thai_stopwords()`
