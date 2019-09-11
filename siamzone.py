@@ -196,7 +196,7 @@ class SiamZone:
             counter[token] = self.tf_idf(token, document)
         return counter.most_common()[:n], counter.most_common()[::-1][:n]
 
-    def one_word(self, word):
+    def tfidf_word(self, word):
         documents = self.tf_dic.keys()
         counter = collections.Counter()
         for document in documents:

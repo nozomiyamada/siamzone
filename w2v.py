@@ -13,16 +13,6 @@ from pythainlp import word_tokenize
 from gensim.models import word2vec
 from gensim.models import KeyedVectors
 
-def make_model(text_file='/Users/Nozomi/files/news/thairath/json/cat.txt', skipgram=0, epoch=3):
-    if skipgram == 0:
-        save_name = text_file.rsplit('/', 1)[0] + '/cbow'
-    else:
-        save_name = text_file.rsplit('/', 1)[0] + '/skip'
-    sentences = word2vec.LineSentence(text_file)
-    model = word2vec.Word2Vec(sentences, sg=skipgram, size=300, min_count=5, window=5, iter=epoch)  # CBOW: sg=0, skip-gram: sg=1
-    model.save(save_name+'.model')
-    model.wv.save_word2vec_format(save_name+'.bin', binary=True)
-
 def cos_sim(v1, v2):
     return round(float(np.dot(v1, v2)) / (norm(v1) * norm(v2)), 4)
 
@@ -40,12 +30,8 @@ class Word2Vector:
 
 WV = Word2Vector()  # instance
 
-def load_model(skipgram=False):
-    if skipgram:
-        WV.model = word2vec.Word2Vec.load('/Users/Nozomi/files/news/thairath/json/skip.model')
-    else:
-        WV.model = word2vec.Word2Vec.load('/Users/Nozomi/files/news/thairath/json/cbow.model')
-    WV.vocab = list(WV.model.wv.vocab.keys())
+def load_model():
+    model = word2vec.Word2VecKeyedVectors.load('siamzone_skip.bin')
 
 # search most similar n words
 def sim(word, n=10):
