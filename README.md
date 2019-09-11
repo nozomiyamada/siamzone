@@ -4,15 +4,16 @@ website: [Siam Zone](https://www.siamzone.com/)
 
 Lyrics of Thai songs
 
-## scraped data: `siamzone.json` 
-- `{id: {'artist':---, 'title':---, 'lyrics':---, 'date':---}, id: {---}, ---}`
+## scraped data: `siamzone.json`, `siamzone.tsv`
+- json file: `{id: {'artist':---, 'title':---, 'lyrics':---, 'date':---}, id: {---}, ---}`
+- tsv file : `[[date artist title lyrics], []...]`
 - 3,463 artists
 - 15,333 songs
-- 4,078,300 tokens with stopwords
-- 1,714,228 tokens without stopwords
 - period: 2002-08-30 ~ 2019-07-26
 - tokenizer: [`PyThaNLP 2.0.3`](https://github.com/PyThaiNLP/pythainlp)
 - stopword list: `pythainlp.corpus.thai_stopwords()`
+- 4,078,300 tokens with stopwords
+- 1,714,228 tokens without stopwords
 
 |year|2002|2003|2004|2005|2006|2007|2008|2009|2010|
 |---|---|---|---|---|---|---|---|---|---|
