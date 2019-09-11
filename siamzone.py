@@ -1,6 +1,8 @@
 from bs4 import BeautifulSoup
 from pythainlp import word_tokenize, corpus
 from gensim.models import word2vec
+from gensim.models import KeyedVectors
+from sklearn.linear_model import LinearRegression
 import matplotlib.pyplot as plt
 import requests
 import collections
@@ -28,7 +30,6 @@ def scrape(start_id, end_id):
                     all_dic[id] = {'artist':artist, 'title':title, 'lyrics':lyrics, 'date':date}
                 except:
                     print(id)
-
                 
             else:
                 pass
@@ -121,13 +122,22 @@ class SiamZone:
         return count
 
     def zipf(self, stop=False, n=1000):
-        if stop == True:
+        if stop == False:
             count = self.word_freq()
         else:
             count = self.word_freq_nostop()
         
+        LR = LinearRegression()
+        LR.fit
+
+
         x = range(1, n+1)
         y = [tup[1] for tup in count.most_common(n)]
+
+        LR = LinearRegression()
+        model = LR.fit([[np.log10(i)] for i in x], np.log10(y))
+        print(model.coef_, model.intercept_, LR.score([[np.log10(i)] for i in x], np.log10(y)))
+
         plt.xscale('log')
         plt.yscale('log')
         plt.title(f'word frequency without stopwords: top {n}')
@@ -151,7 +161,7 @@ class SiamZone:
         
         return count
 
-    def make_tfidf(self):
+    def make_tfidf(self, stop=False):
         self.tf_dic = {}
         self.idf_dic = {}
         for line in self.lines:
@@ -161,7 +171,11 @@ class SiamZone:
                 if document not in self.tf_dic:
                     self.tf_dic[document] = {}
                 for token in tokens:
-                    self.tf_dic[document][token] = self.tf_dic[document].get(token, 0) + 1
+                    # tf
+                    if not (stop and token in corpus.thai_stopwords()):
+                        self.tf_dic[document][token] = self.tf_dic[document].get(token, 0) + 1
+
+                    # idf
                     if token not in self.idf_dic:
                         self.idf_dic[token] = set(document)
                     else:
@@ -199,8 +213,8 @@ class SiamZone:
         maxi = np.max(values)
         mini = np.min(values)
         sd = np.std(values)
-        print('|{}|{}|{:.3f}|{:.3f}|{:.3f}|{:.3f}|{:.3f}|'.format(word,df,mean,medi,maxi,mini,sd))
+        print(f'|{word}|{df}|{mean:.3f}|{medi:.3f}|{maxi:.3f}|{mini:.3f}|{sd:.3f}|')
         return counter
 
 sz = SiamZone()
-sz.make_tfidf()
+sz.make_tfidf(stop=True)
