@@ -144,8 +144,6 @@ class SiamZone:
         plt.plot(x,y)
         plt.show()
 
-
-
     def ngram(self, n=2, topn=10):
         count = collections.Counter()
         for line in self.lines:
@@ -157,8 +155,7 @@ class SiamZone:
         # print topn: rank, ngram, count
         most = count.most_common(topn)
         for i in range(topn):
-            print('| {} | {} | {} |'.format(i+1, most[i][0], most[i][1]))
-        
+            print('| {} | {} | {} |'.format(i+1, most[i][0], most[i][1]))       
         return count
 
     def make_tfidf(self, stop=False):
@@ -216,5 +213,5 @@ class SiamZone:
         print(f'|{word}|{df}|{mean:.3f}|{medi:.3f}|{maxi:.3f}|{mini:.3f}|{sd:.3f}|')
         return counter
 
-sz = SiamZone()
-sz.make_tfidf(stop=True)
+#sz = SiamZone()
+#sz.make_tfidf(stop=True)
